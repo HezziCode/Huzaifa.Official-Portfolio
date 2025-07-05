@@ -5,16 +5,27 @@ import { styles } from "../styles";
 import { navLinks } from "../constants";
 import { logo, menu, close } from "../assets";
 
-// Smooth scroll utility function
+// Enhanced smooth scroll utility function
 const smoothScrollTo = (elementId) => {
-  const element = document.getElementById(elementId);
-  if (element) {
-    const offsetTop = element.offsetTop - 80; // Account for fixed navbar height
-    window.scrollTo({
-      top: offsetTop,
-      behavior: 'smooth'
-    });
-  }
+  console.log(`Attempting to scroll to: ${elementId}`); // Debug log
+
+  // Wait for any animations to complete
+  setTimeout(() => {
+    const element = document.getElementById(elementId);
+    console.log(`Element found:`, element); // Debug log
+
+    if (element) {
+      const offsetTop = element.offsetTop - 100; // Account for fixed navbar height
+      console.log(`Scrolling to offset: ${offsetTop}`); // Debug log
+
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    } else {
+      console.error(`Element with ID '${elementId}' not found`);
+    }
+  }, 100); // Small delay to ensure DOM is ready
 };
 
 const Navbar = () => {
@@ -39,9 +50,10 @@ const Navbar = () => {
 
   // Handle navigation click with smooth scroll
   const handleNavClick = (navId, navTitle) => {
+    console.log(`Navigation clicked: ${navTitle} -> ${navId}`); // Debug log
     setActive(navTitle);
+    setToggle(false); // Close mobile menu first
     smoothScrollTo(navId);
-    setToggle(false); // Close mobile menu
   };
 
   return (
@@ -89,54 +101,51 @@ const Navbar = () => {
           <img
             src={toggle ? close : menu}
             alt='menu'
-            className='w-[24px] h-[24px] mobile-lg:w-[26px] mobile-lg:h-[26px] sm:w-[28px] sm:h-[28px] object-contain cursor-pointer z-30'
+            className='w-[24px] h-[24px] mobile-lg:w-[26px] mobile-lg:h-[26px] sm:w-[28px] sm:h-[28px] object-contain cursor-pointer relative z-50'
             onClick={() => setToggle(!toggle)}
           />
 
           {/* Mobile Menu Overlay */}
           <div
-            className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-20 transition-opacity duration-300 ${
-              toggle ? "opacity-100" : "opacity-0 pointer-events-none"
+            className={`fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${
+              toggle ? "opacity-100 z-40" : "opacity-0 pointer-events-none -z-10"
             }`}
             onClick={() => setToggle(false)}
           />
 
           {/* Mobile Menu */}
           <div
-            className={`fixed top-0 right-0 h-full w-[280px] mobile-lg:w-[320px] glass-card-strong border-l border-white/10 shadow-2xl z-25 transform transition-transform duration-300 ease-in-out ${
-              toggle ? "translate-x-0" : "translate-x-full"
+            className={`fixed top-0 right-0 h-full w-[280px] mobile-lg:w-[320px] bg-primary/95 backdrop-blur-xl border-l border-white/20 shadow-2xl transform transition-transform duration-300 ease-in-out ${
+              toggle ? "translate-x-0 z-50" : "translate-x-full -z-10"
             }`}
           >
             {/* Menu Header */}
-            <div className="flex items-center justify-between p-6 border-b border-white/10">
+            <div className="flex items-center justify-between p-6 border-b border-white/20 bg-black/20">
               <div className="flex items-center gap-2">
                 <img src={logo} alt='logo' className='w-8 h-8 object-contain' />
-                <span className="text-white font-bold text-lg">Menu</span>
+                <span className="text-white font-bold text-lg">Navigation</span>
               </div>
               <img
                 src={close}
                 alt='close'
-                className='w-6 h-6 object-contain cursor-pointer hover:scale-110 transition-transform'
+                className='w-6 h-6 object-contain cursor-pointer hover:scale-110 transition-transform text-white'
                 onClick={() => setToggle(false)}
               />
             </div>
 
             {/* Menu Items */}
-            <ul className='list-none flex flex-col p-6 gap-6'>
+            <ul className='list-none flex flex-col p-6 gap-4 bg-black/10'>
               {navLinks.map((nav, index) => (
                 <li
                   key={nav.id}
-                  className={`font-medium cursor-pointer text-[16px] transition-all duration-300 hover:text-gradient-primary min-h-[48px] flex items-center relative group ${
-                    active === nav.title ? "text-gradient-primary" : "text-secondary"
+                  className={`font-medium cursor-pointer text-[18px] transition-all duration-300 hover:text-white min-h-[56px] flex items-center relative group border border-white/10 rounded-xl ${
+                    active === nav.title ? "text-white bg-gradient-to-r from-[#915EFF]/20 to-[#00cea8]/20 border-[#915EFF]/50" : "text-white/80 hover:bg-white/10"
                   }`}
-                  style={{
-                    animationDelay: toggle ? `${index * 0.1}s` : '0s'
-                  }}
                   onClick={() => handleNavClick(nav.id, nav.title)}
                 >
-                  <span className="block py-3 px-4 w-full rounded-xl hover:bg-white/5 transition-all duration-300 relative">
+                  <span className="block py-4 px-6 w-full rounded-xl transition-all duration-300 relative font-semibold">
                     {nav.title}
-                    <span className="absolute bottom-0 left-4 w-0 h-0.5 bg-gradient-to-r from-[#915EFF] to-[#00cea8] group-hover:w-[calc(100%-2rem)] transition-all duration-300"></span>
+                    <span className="absolute bottom-1 left-6 w-0 h-0.5 bg-gradient-to-r from-[#915EFF] to-[#00cea8] group-hover:w-[calc(100%-3rem)] transition-all duration-300"></span>
                   </span>
                 </li>
               ))}
@@ -144,13 +153,13 @@ const Navbar = () => {
 
             {/* Menu Footer */}
             <div className="absolute bottom-6 left-6 right-6">
-              <div className="glass-card p-4 rounded-xl text-center">
-                <p className="text-secondary text-sm">
+              <div className="bg-black/30 border border-white/20 p-4 rounded-xl text-center backdrop-blur-sm">
+                <p className="text-white/80 text-sm mb-3">
                   Let's build something amazing together
                 </p>
                 <button
                   onClick={() => handleNavClick('contact', 'Contact')}
-                  className="btn-primary mt-3 w-full"
+                  className="bg-gradient-to-r from-[#915EFF] to-[#00cea8] text-white font-semibold py-3 px-6 rounded-lg w-full hover:scale-105 transition-transform duration-300"
                 >
                   Get In Touch
                 </button>
