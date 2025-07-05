@@ -165,7 +165,7 @@ const Works = () => {
   }, []);
 
   return (
-    <>
+    <section id="projects">
       <div className="glass-card rounded-3xl p-6 sm:p-8 mb-8">
         <p className={`${styles.sectionSubText} text-gradient-secondary`}>My work</p>
         <h2 className={`${styles.sectionHeadText} text-gradient-primary mb-4`}>Projects.</h2>
@@ -186,7 +186,7 @@ const Works = () => {
           </div>
         ))}
       </div>
-    </>
+    </section>
   );
 };
 

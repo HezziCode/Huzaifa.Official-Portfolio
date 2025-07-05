@@ -78,7 +78,8 @@ const AboutMeSection = () => {
   }, []);
 
   return (
-    <div
+    <section
+      id="about"
       ref={containerRef}
       className="relative w-full min-h-[600px] overflow-hidden"
     >
@@ -238,7 +239,7 @@ const AboutMeSection = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

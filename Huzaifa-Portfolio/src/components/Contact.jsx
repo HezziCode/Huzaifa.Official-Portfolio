@@ -184,7 +184,8 @@ const Contact = () => {
   };
 
   return (
-    <div
+    <section
+      id="contact"
       className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-6 sm:gap-10 overflow-hidden`}
     >
       {/* Success Popup */}
@@ -361,7 +362,7 @@ const Contact = () => {
           </div>
         </div>
       </motion.div>
-    </div>
+    </section>
   );
 };
 

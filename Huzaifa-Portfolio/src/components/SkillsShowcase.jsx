@@ -66,7 +66,7 @@ const SkillsShowcase = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative w-full py-16">
+    <section id="skills" ref={containerRef} className="relative w-full py-16">
       {/* Background with grid pattern */}
       <div className="absolute inset-0 grid-pattern opacity-30"></div>
       
@@ -143,7 +143,7 @@ const SkillsShowcase = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -45,16 +45,21 @@ import huzaifadev from "../assets/company/huzaifadev.png";
 
 
 export const navLinks = [
-
-
   {
     id: "about",
     title: "About",
-
   },
   {
-    id: "work",
-    title: "Work",
+    id: "skills",
+    title: "Skills",
+  },
+  {
+    id: "experience",
+    title: "Experience",
+  },
+  {
+    id: "projects",
+    title: "Projects",
   },
   {
     id: "contact",
