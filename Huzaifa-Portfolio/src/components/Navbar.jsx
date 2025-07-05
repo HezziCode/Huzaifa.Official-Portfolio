@@ -5,27 +5,61 @@ import { styles } from "../styles";
 import { navLinks } from "../constants";
 import { logo, menu, close } from "../assets";
 
+// Simple direct scroll function as backup
+const directScrollTo = (elementId) => {
+  console.log(`🎯 Direct scroll to: ${elementId}`);
+  const element = document.getElementById(elementId);
+  if (element) {
+    const yOffset = -100; // Navbar height offset
+    const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+    console.log(`✅ Direct scroll executed to position: ${y}`);
+  } else {
+    console.error(`❌ Direct scroll failed - element ${elementId} not found`);
+  }
+};
+
 // Enhanced smooth scroll utility function
 const smoothScrollTo = (elementId) => {
-  console.log(`Attempting to scroll to: ${elementId}`); // Debug log
+  console.log(`🔍 Attempting to scroll to: ${elementId}`); // Debug log
 
-  // Wait for any animations to complete
-  setTimeout(() => {
+  // Multiple attempts to find element (sometimes DOM isn't ready)
+  let attempts = 0;
+  const maxAttempts = 5;
+
+  const tryScroll = () => {
+    attempts++;
     const element = document.getElementById(elementId);
-    console.log(`Element found:`, element); // Debug log
+    console.log(`📍 Attempt ${attempts}: Element found:`, element); // Debug log
 
     if (element) {
-      const offsetTop = element.offsetTop - 100; // Account for fixed navbar height
-      console.log(`Scrolling to offset: ${offsetTop}`); // Debug log
+      const rect = element.getBoundingClientRect();
+      const offsetTop = window.pageYOffset + rect.top - 100; // Better calculation
+      console.log(`🚀 Scrolling to offset: ${offsetTop}`); // Debug log
 
       window.scrollTo({
         top: offsetTop,
         behavior: 'smooth'
       });
+
+      // Verify scroll happened
+      setTimeout(() => {
+        console.log(`✅ Current scroll position: ${window.pageYOffset}`);
+      }, 1000);
+
+    } else if (attempts < maxAttempts) {
+      console.log(`⏳ Element not found, retrying in ${attempts * 100}ms...`);
+      setTimeout(tryScroll, attempts * 100);
     } else {
-      console.error(`Element with ID '${elementId}' not found`);
+      console.error(`❌ Element with ID '${elementId}' not found after ${maxAttempts} attempts`);
+      // List all available IDs for debugging
+      const allIds = Array.from(document.querySelectorAll('[id]')).map(el => el.id);
+      console.log(`📋 Available IDs:`, allIds);
     }
-  }, 100); // Small delay to ensure DOM is ready
+  };
+
+  // Start trying immediately
+  tryScroll();
 };
 
 const Navbar = () => {
@@ -50,10 +84,19 @@ const Navbar = () => {
 
   // Handle navigation click with smooth scroll
   const handleNavClick = (navId, navTitle) => {
-    console.log(`Navigation clicked: ${navTitle} -> ${navId}`); // Debug log
+    console.log(`🎯 Navigation clicked: ${navTitle} -> ${navId}`); // Debug log
     setActive(navTitle);
     setToggle(false); // Close mobile menu first
-    smoothScrollTo(navId);
+
+    // Use direct scroll method (more reliable)
+    setTimeout(() => {
+      directScrollTo(navId);
+    }, 100);
+
+    // Also try the enhanced smooth scroll as backup
+    setTimeout(() => {
+      smoothScrollTo(navId);
+    }, 200);
   };
 
   return (
