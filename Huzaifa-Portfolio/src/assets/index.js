@@ -15,7 +15,7 @@ import hezziBlogs from './blogs.jpg';
 import project3 from './E-commerce.jpg';
 import resumeBuilder from './resume.jpg';
 import cryptoAgent from './crypto-agent.jpg';
-import agenticWorld from './agentic-website.jpg'; // Changed path to existing file
+import agenticWorld from './agentic-website.jpg'; // Using same image for both projects
 import agenticWebsite from './agentic-website.jpg';
 import coffeeWebsite from './coffee-website.jpg';
 import mysql from './tech/mysql.png';

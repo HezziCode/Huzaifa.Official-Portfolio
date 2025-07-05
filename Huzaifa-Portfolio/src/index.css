@@ -61,18 +61,38 @@
   box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
 }
 
-/* Professional button styles */
+/* Mobile-first button styles */
 .btn-primary {
   background: linear-gradient(135deg, #915eff 0%, #00cea8 100%);
   border: none;
-  padding: 12px 32px;
-  border-radius: 12px;
+  padding: 10px 20px;
+  border-radius: 8px;
   font-weight: 600;
   color: white;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  font-size: 14px;
+  min-height: 44px; /* Touch-friendly minimum */
+  min-width: 44px;
+}
+
+/* Responsive button scaling */
+@media (min-width: 425px) {
+  .btn-primary {
+    padding: 12px 24px;
+    font-size: 15px;
+    border-radius: 10px;
+  }
+}
+
+@media (min-width: 640px) {
+  .btn-primary {
+    padding: 12px 32px;
+    font-size: 16px;
+    border-radius: 12px;
+  }
 }
 
 .btn-primary::before {
@@ -98,6 +118,81 @@
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(145, 94, 255, 0.4);
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  /* Disable hover effects on mobile */
+  .hover-lift:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* Better touch targets */
+  .btn-primary {
+    min-height: 48px;
+    min-width: 48px;
+  }
+
+  /* Reduce animations on mobile for performance */
+  .animate-bounce,
+  .animate-pulse,
+  .animate-ping {
+    animation-duration: 2s;
+  }
+
+  /* Mobile-friendly glassmorphism */
+  .glass-card {
+    backdrop-filter: blur(8px);
+  }
+
+  .glass-card-strong {
+    backdrop-filter: blur(12px);
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Remove hover effects on touch devices */
+  .hover-lift:hover {
+    transform: none;
+  }
+
+  /* Better touch feedback */
+  .btn-primary:active {
+    transform: scale(0.98);
+  }
+
+  /* Larger touch targets */
+  button, a, input, textarea {
+    min-height: 44px;
+  }
+}
+
+/* Mobile performance optimizations */
+@media (max-width: 640px) {
+  /* Reduce expensive effects on mobile */
+  * {
+    will-change: auto !important;
+  }
+
+  /* Optimize animations for mobile */
+  .animate-bounce,
+  .animate-pulse,
+  .animate-ping {
+    animation-duration: 3s;
+    animation-iteration-count: 3;
+  }
+
+  /* Better mobile scrolling */
+  html {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Prevent zoom on input focus */
+  input, textarea, select {
+    font-size: 16px !important;
+  }
 }
 
 /* Enhanced text gradients */

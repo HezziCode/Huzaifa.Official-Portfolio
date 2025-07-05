@@ -16,7 +16,18 @@ module.exports = {
         card: "0px 35px 120px -15px #211e35",
       },
       screens: {
-        xs: "450px",
+        'xs': '375px',    // Small phones
+        'sm': '640px',    // Large phones
+        'md': '768px',    // Tablets
+        'lg': '1024px',   // Small laptops
+        'xl': '1280px',   // Large laptops
+        '2xl': '1536px',  // Desktop
+        // Custom mobile breakpoints
+        'mobile': '320px',
+        'mobile-lg': '425px',
+        'tablet': '768px',
+        'laptop': '1024px',
+        'desktop': '1440px',
       },
       backgroundImage: {
         "hero-pattern": "url('/src/assets/herobg.png')",
