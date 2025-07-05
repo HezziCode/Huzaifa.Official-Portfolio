@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionWrapper } from "../hoc";
 import { styles } from "../styles";
+import { stylishProfile } from "../assets";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -129,7 +130,7 @@ const AboutMeSection = () => {
           <div className="glass-card-strong p-3 sm:p-4 rounded-3xl hover-lift">
             <div className="relative w-52 h-52 xs:w-64 xs:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-2xl overflow-hidden border-2 border-[#915EFF]/40 shadow-2xl glow-purple">
               <img
-                src="/src/assets/stylish.jpg"
+                src={stylishProfile}
                 alt="Huzaifa"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />

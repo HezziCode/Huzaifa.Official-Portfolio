@@ -33,8 +33,7 @@ const Footer = () => {
         </div>
 
         <div className="text-center">
-          <p className="text-secondary text-xs sm:text-sm mb-2">© 2024 Muhammed Huzaifa. All rights reserved.</p>
-          <p className="text-secondary/60 text-xs">Built with Next.js, React & AI ✨</p>
+          <p className="text-secondary text-xs sm:text-sm mb-2">© 2025 Muhammad Huzaifa. All rights reserved.</p>
         </div>
       </div>
     </footer>

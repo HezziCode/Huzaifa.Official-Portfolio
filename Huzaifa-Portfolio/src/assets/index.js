@@ -35,7 +35,8 @@ import firebase from "./tech/firebase.png";
 import typescript from "./tech/typescript.png";
 import firstTestimonial from './Tars Ken.webp';
 import secondTestimonial from './image.webp';
-import thirdTestimonial from './third testimonial.webp'
+import thirdTestimonial from './third testimonial.webp';
+import stylishProfile from './stylish.jpg';
 
 export {
   logo,
@@ -62,6 +63,7 @@ export {
   firstTestimonial,
   secondTestimonial,
   thirdTestimonial,
+  stylishProfile,
   gsap,
   framer,
   figma,
