@@ -10,30 +10,29 @@ import {
   close,
   css,
   hezziBlogs,
-  resumeBuilder,
+  chatTask,
   project3,
   cryptoAgent,
   agenticWorld,
   agenticWebsite,
   coffeeWebsite,
+  huzenPerfumes,
+  furniro,
+  hezziblogs,
   mysql,
   express,
   aws,
   mui,
-  gsap,
-  framer,
   figma,
   git,
   html,
   javascript,
   mongodb,
   nodejs,
-  reactjs,
   redux,
   tailwind,
-  threejs,
-  firebase,
   typescript,
+  postgresql,
   firstTestimonial,
   secondTestimonial,
   thirdTestimonial,
@@ -104,24 +103,12 @@ const technologies = [
     icon: typescript,
   },
   {
-    name: "React JS",
-    icon: reactjs,
+    name: "FastAPI",
+    icon: backend,
   },
   {
-    name: "gsap",
-    icon: gsap,
-  },
-  {
-    name: "framer",
-    icon: framer,
-  },
-  {
-    name: "Three JS",
-    icon: threejs,
-  },
-  {
-    name: "Firebase",
-    icon: firebase,
+    name: "Neon DB",
+    icon: postgresql,
   },
   {
     name: "figma",
@@ -173,10 +160,10 @@ const experiences = [
     iconBg: "#383E56",
     date: "Dec 2023 - present",
     points: [
-      "Developing full-stack web applications using Next.js, React.js, and modern backend technologies.",
-      "Building intelligent AI agents and chatbots using OpenAI SDK, Streamlit, and Chainlit frameworks.",
-      "Implementing content management solutions with Sanity CMS and real-time databases with Firebase.",
-      "Creating interactive 3D experiences and animations using Three.js and GSAP for enhanced user engagement.",
+      "Developing full-stack web applications using Next.js, FastAPI, and modern database solutions like Neon DB.",
+      "Building intelligent AI agents and chatbots using OpenAI SDK, LangChain, and Chainlit frameworks.",
+      "Implementing content management solutions with Sanity CMS and scalable cloud architectures.",
+      "Creating high-performance backends and real-time AI integrations for enhanced user engagement.",
       "Developing Python-based AI applications and integrating machine learning models into web platforms.",
       "Managing end-to-end development workflows from AI model integration to production deployment.",
       "Specializing in agentic AI systems that can autonomously perform complex tasks and decision-making.",
@@ -229,10 +216,62 @@ const projects = [
         name: "tailwindcss",
         color: "green-text-gradient",
       },
+      {
+        name: "e-commerce",
+        color: "white-text-gradient",
+      },
     ],
-    image: project3,
-    source_code_link: "https://github.com/",
+    image: furniro,
+    source_code_link: "https://github.com/HezziCode/ui-ux-hackhathone",
     live_demo_link: "https://ui-ux-hackhathone.vercel.app/",
+  },
+  {
+    name: "Huzen Perfumes",
+    description:
+      "A premium e-commerce platform for luxury fragrances. Features a sophisticated product showcase, elegant design with framer-motion animations, and a seamless shopping experience for perfume enthusiasts.",
+    tags: [
+      {
+        name: "nextjs",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "tailwindcss",
+        color: "green-text-gradient",
+      },
+      {
+        name: "framer-motion",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: huzenPerfumes,
+    source_code_link: "https://github.com/HezziCode/huzen-perfumes",
+    live_demo_link: "https://huzen-perfumes.vercel.app/",
+  },
+  {
+    name: "ChatTask",
+    description:
+      "A sophisticated task management application integrated with intelligent chat capabilities. Built with Next.js, FastAPI, OpenAI Agent SDK, and a custom MCP server for seamless user experience.",
+    tags: [
+      {
+        name: "nextjs",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "fastapi",
+        color: "white-text-gradient",
+      },
+      {
+        name: "OpenAI Agent SDK",
+        color: "green-text-gradient",
+      },
+      {
+        name: "mcp-server",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: chatTask,
+    source_code_link: "https://github.com/HezziCode/spec-driven-devlopment-hackathone",
+    live_demo_link: "https://secure-todoz.vercel.app/",
   },
   {
     name: "HezziBlogs",
@@ -252,57 +291,9 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image: hezziBlogs,
-    source_code_link: "https://github.com/",
+    image: hezziblogs,
+    source_code_link: "https://github.com/HezziCode/Blog",
     live_demo_link: "https://hezzi-blogs.vercel.app/",
-  },
-  {
-    name: "Resume Generator",
-    description:
-      "Create a professional, ATS-friendly resume in minutes with our intuitive Resume Builder. Easily customize templates, add your information, and download a polished resume that helps you stand out to employers.",
-    tags: [
-      {
-        name: "html",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "css",
-        color: "white-text-gradient",
-      },
-      {
-        name: "typescript",
-        color: "green-text-gradient",
-      },
-    ],
-    image: resumeBuilder,
-    source_code_link: "https://github.com/",
-    live_demo_link: "https://generate-ur-resume.vercel.app/",
-  },
-  {
-    name: "Café Grandeur",
-    description:
-      "A cozy and modern café website showcasing premium coffee offerings from around the world. Features elegant design, responsive layout, and beautiful imagery highlighting the café's atmosphere and specialty coffee drinks.",
-    tags: [
-      {
-        name: "nextjs",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "typescript",
-        color: "green-text-gradient",
-      },
-      {
-        name: "tailwindcss",
-        color: "pink-text-gradient",
-      },
-      {
-        name: "responsive-design",
-        color: "white-text-gradient",
-      },
-    ],
-    image: coffeeWebsite,
-    source_code_link: "https://github.com/HezziCode/Coffee-Website.git",
-    live_demo_link: "https://coffee-website-flax.vercel.app/",
   },
   {
     name: "Crypto Agent",

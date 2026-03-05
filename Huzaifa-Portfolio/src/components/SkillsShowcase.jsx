@@ -12,17 +12,14 @@ const SkillsShowcase = () => {
 
   const skills = [
     { name: "Next.js", level: 95, color: "#000000", bgColor: "#ffffff" },
-    { name: "React.js", level: 92, color: "#61DAFB", bgColor: "#61DAFB" },
+    { name: "FastAPI", level: 90, color: "#009485", bgColor: "#009485" },
     { name: "TypeScript", level: 88, color: "#3178C6", bgColor: "#3178C6" },
-    { name: "Three.js", level: 85, color: "#000000", bgColor: "#ffffff" },
+    { name: "Neon DB", level: 85, color: "#00E599", bgColor: "#00E599" },
     { name: "Sanity", level: 90, color: "#f03e2f", bgColor: "#f03e2f" },
     { name: "Python", level: 85, color: "#3776ab", bgColor: "#3776ab" },
     { name: "OpenAI SDK", level: 80, color: "#10a37f", bgColor: "#10a37f" },
-    { name: "Streamlit", level: 75, color: "#ff4b4b", bgColor: "#ff4b4b" },
     { name: "Chainlit", level: 70, color: "#00d4aa", bgColor: "#00d4aa" },
-    { name: "Firebase", level: 92, color: "#FFCA28", bgColor: "#FFCA28" },
     { name: "Tailwind CSS", level: 95, color: "#06B6D4", bgColor: "#06B6D4" },
-    { name: "GSAP", level: 80, color: "#88ce02", bgColor: "#88ce02" },
   ];
 
   useEffect(() => {
@@ -69,7 +66,7 @@ const SkillsShowcase = () => {
     <section id="skills" ref={containerRef} className="relative w-full py-16">
       {/* Background with grid pattern */}
       <div className="absolute inset-0 grid-pattern opacity-30"></div>
-      
+
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="glass-card rounded-3xl p-6 sm:p-8 mb-12 text-center">
@@ -101,7 +98,7 @@ const SkillsShowcase = () => {
                   {skill.level}%
                 </span>
               </div>
-              
+
               {/* Skill bar container */}
               <div className="w-full bg-white/10 rounded-full h-3 overflow-hidden border border-white/5">
                 <div
@@ -124,7 +121,7 @@ const SkillsShowcase = () => {
                   ></div>
                 </div>
               </div>
-              
+
               {/* Skill description */}
               <p className="text-secondary/70 text-xs mt-2">
                 {skill.level >= 90 ? "Expert" : skill.level >= 80 ? "Advanced" : "Intermediate"} level proficiency

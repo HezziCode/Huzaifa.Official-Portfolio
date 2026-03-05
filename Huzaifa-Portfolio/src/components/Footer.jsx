@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col items-center">
         <div className="flex justify-center gap-6 sm:gap-8 mb-4 sm:mb-6">
           <a
-            href="https://www.instagram.com/huzaifa_dev/"
+            href="https://www.instagram.com/huzaifasys/"
             target="_blank"
             rel="noopener noreferrer"
             className="glass-card w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center hover:text-[#915EFF] hover:glow-purple transition-all duration-300"
@@ -15,7 +15,7 @@ const Footer = () => {
             <FaInstagram size={18} className="sm:text-xl" />
           </a>
           <a
-            href="https://x.com/@Huzaifa20008"
+            href="https://x.com/huzaifasys"
             target="_blank"
             rel="noopener noreferrer"
             className="glass-card w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center hover:text-[#915EFF] hover:glow-purple transition-all duration-300"
@@ -23,7 +23,7 @@ const Footer = () => {
             <FaXTwitter size={18} className="sm:text-xl" />
           </a>
           <a
-            href="https://www.linkedin.com/in/muhammad-huzaifa-9102282b7/"
+            href="https://www.linkedin.com/in/huzaifasys/"
             target="_blank"
             rel="noopener noreferrer"
             className="glass-card w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center hover:text-[#915EFF] hover:glow-purple transition-all duration-300"
@@ -33,7 +33,7 @@ const Footer = () => {
         </div>
 
         <div className="text-center">
-          <p className="text-secondary text-xs sm:text-sm mb-2">© 2025 Muhammad Huzaifa. All rights reserved.</p>
+          <p className="text-secondary text-xs sm:text-sm mb-2">© 2026 Muhammad Huzaifa. All rights reserved.</p>
         </div>
       </div>
     </footer>

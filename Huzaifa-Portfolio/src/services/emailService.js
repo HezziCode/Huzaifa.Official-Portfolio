@@ -10,11 +10,11 @@ const EMAIL_CONFIG = {
 // Validate environment variables
 const validateConfig = () => {
   const { serviceId, templateId, publicKey } = EMAIL_CONFIG;
-  
+
   if (!serviceId || !templateId || !publicKey) {
     throw new Error('EmailJS configuration is incomplete. Please check your environment variables.');
   }
-  
+
   return true;
 };
 
@@ -33,7 +33,7 @@ const initializeEmailJS = () => {
 // Sanitize form data
 const sanitizeFormData = (formData) => {
   const sanitized = {};
-  
+
   // Remove any potentially harmful content
   Object.keys(formData).forEach(key => {
     if (typeof formData[key] === 'string') {
@@ -45,30 +45,30 @@ const sanitizeFormData = (formData) => {
       sanitized[key] = formData[key];
     }
   });
-  
+
   return sanitized;
 };
 
 // Validate form data
 const validateFormData = (formData) => {
   const errors = {};
-  
+
   // Name validation
   if (!formData.name || formData.name.trim().length < 2) {
     errors.name = 'Name must be at least 2 characters long';
   }
-  
+
   // Email validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!formData.email || !emailRegex.test(formData.email)) {
     errors.email = 'Please enter a valid email address';
   }
-  
+
   // Message validation
   if (!formData.message || formData.message.trim().length < 10) {
     errors.message = 'Message must be at least 10 characters long';
   }
-  
+
   return {
     isValid: Object.keys(errors).length === 0,
     errors
@@ -95,29 +95,29 @@ export const sendEmail = async (formData) => {
     if (!initializeEmailJS()) {
       throw new Error('Email service is not properly configured');
     }
-    
+
     // Check rate limiting
     checkRateLimit();
-    
+
     // Validate form data
     const validation = validateFormData(formData);
     if (!validation.isValid) {
       throw new Error('Form validation failed', { cause: validation.errors });
     }
-    
+
     // Sanitize form data
     const sanitizedData = sanitizeFormData(formData);
-    
+
     // Prepare email template parameters
     const templateParams = {
-      from_name: sanitizedData.name,
+      name: sanitizedData.name,
       to_name: "Muhammad Huzaifa",
       from_email: sanitizedData.email,
-      to_email: "yesshuzaifa@gmail.com",
+      to_email: "mk26408527@gmail.com",
       message: sanitizedData.message,
-      timestamp: new Date().toISOString(),
+      time: new Date().toLocaleString(), // Added to match {{time}} in HTML template
     };
-    
+
     // Send email
     const response = await emailjs.send(
       EMAIL_CONFIG.serviceId,
@@ -125,34 +125,38 @@ export const sendEmail = async (formData) => {
       templateParams,
       EMAIL_CONFIG.publicKey
     );
-    
+
     // Update rate limiting
     lastEmailSent = Date.now();
-    
+
     return {
       success: true,
       message: 'Email sent successfully!',
       response
     };
-    
+
   } catch (error) {
     console.error('Email sending failed:', error);
-    
+
     // Return user-friendly error messages
     let userMessage = 'Failed to send email. Please try again later.';
-    
-    if (error.message.includes('rate limit') || error.message.includes('wait')) {
-      userMessage = error.message;
-    } else if (error.message.includes('validation')) {
+
+    const errorMessage = error?.message || error?.text || String(error) || '';
+
+    if (errorMessage.includes('rate limit') || errorMessage.includes('wait')) {
+      userMessage = errorMessage;
+    } else if (errorMessage.includes('validation')) {
       userMessage = 'Please check your form data and try again.';
-    } else if (error.message.includes('configuration')) {
+    } else if (errorMessage.includes('configuration')) {
       userMessage = 'Email service is temporarily unavailable.';
+    } else if (errorMessage.includes('Invalid grant') || errorMessage.includes('Gmail_API')) {
+      userMessage = 'Email configuration error: Invalid Gmail grant. Please reconnect your Gmail account on your EmailJS dashboard.';
     }
-    
+
     return {
       success: false,
       message: userMessage,
-      error: process.env.NODE_ENV === 'development' ? error : undefined
+      error: import.meta.env.DEV ? error : undefined
     };
   }
 };

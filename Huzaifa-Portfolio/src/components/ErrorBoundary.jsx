@@ -4,10 +4,10 @@ import { motion } from 'framer-motion';
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      hasError: false, 
-      error: null, 
-      errorInfo: null 
+    this.state = {
+      hasError: false,
+      error: null,
+      errorInfo: null
     };
   }
 
@@ -19,7 +19,7 @@ class ErrorBoundary extends React.Component {
   componentDidCatch(error, errorInfo) {
     // Log error details
     console.error('ErrorBoundary caught an error:', error, errorInfo);
-    
+
     this.setState({
       error: error,
       errorInfo: errorInfo
@@ -33,7 +33,7 @@ class ErrorBoundary extends React.Component {
     if (this.state.hasError) {
       // Custom error UI
       return (
-        <motion.div 
+        <motion.div
           className="min-h-screen flex items-center justify-center bg-primary px-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -42,17 +42,17 @@ class ErrorBoundary extends React.Component {
           <div className="glass-card-strong rounded-3xl p-8 max-w-md w-full text-center">
             <div className="mb-6">
               <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-red-500/20 mb-4">
-                <svg 
-                  className="h-8 w-8 text-red-500" 
-                  fill="none" 
-                  stroke="currentColor" 
+                <svg
+                  className="h-8 w-8 text-red-500"
+                  fill="none"
+                  stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth="2" 
-                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" 
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"
                   />
                 </svg>
               </div>
@@ -71,7 +71,7 @@ class ErrorBoundary extends React.Component {
               >
                 Refresh Page
               </button>
-              
+
               <button
                 onClick={() => this.setState({ hasError: false, error: null, errorInfo: null })}
                 className="w-full py-3 px-6 rounded-xl outline-none text-secondary border border-secondary/20 hover:border-secondary/40 transition-colors text-sm font-medium"
@@ -81,7 +81,7 @@ class ErrorBoundary extends React.Component {
             </div>
 
             {/* Show error details in development */}
-            {process.env.NODE_ENV === 'development' && this.state.error && (
+            {import.meta.env.DEV && this.state.error && (
               <details className="mt-6 text-left">
                 <summary className="text-secondary text-xs cursor-pointer hover:text-white transition-colors">
                   Error Details (Development Only)

@@ -217,11 +217,10 @@ const Contact = () => {
               value={form.name}
               onChange={handleChange}
               placeholder="What's your good name?"
-              className={`glass-card py-3 sm:py-4 px-4 sm:px-6 placeholder:text-secondary/70 text-white rounded-xl outline-none border font-medium text-sm sm:text-base transition-all duration-300 ${
-                errors.name
+              className={`glass-card py-3 sm:py-4 px-4 sm:px-6 placeholder:text-secondary/70 text-white rounded-xl outline-none border font-medium text-sm sm:text-base transition-all duration-300 ${errors.name
                   ? 'border-red-500 focus:border-red-500 focus:glow-red'
                   : 'border-white/10 focus:border-[#915EFF] focus:glow-purple'
-              }`}
+                }`}
             />
             {errors.name && (
               <span className="text-red-400 text-xs mt-1 flex items-center gap-1">
@@ -243,11 +242,10 @@ const Contact = () => {
               value={form.email}
               onChange={handleChange}
               placeholder="What's your web address?"
-              className={`glass-card py-3 sm:py-4 px-4 sm:px-6 placeholder:text-secondary/70 text-white rounded-xl outline-none border font-medium text-sm sm:text-base transition-all duration-300 ${
-                errors.email
+              className={`glass-card py-3 sm:py-4 px-4 sm:px-6 placeholder:text-secondary/70 text-white rounded-xl outline-none border font-medium text-sm sm:text-base transition-all duration-300 ${errors.email
                   ? 'border-red-500 focus:border-red-500 focus:glow-red'
                   : 'border-white/10 focus:border-[#915EFF] focus:glow-purple'
-              }`}
+                }`}
             />
             {errors.email && (
               <span className="text-red-400 text-xs mt-1 flex items-center gap-1">
@@ -269,11 +267,10 @@ const Contact = () => {
               value={form.message}
               onChange={handleChange}
               placeholder='What you want to say?'
-              className={`glass-card py-3 sm:py-4 px-4 sm:px-6 placeholder:text-secondary/70 text-white rounded-xl outline-none border font-medium text-sm sm:text-base transition-all duration-300 resize-none ${
-                errors.message
+              className={`glass-card py-3 sm:py-4 px-4 sm:px-6 placeholder:text-secondary/70 text-white rounded-xl outline-none border font-medium text-sm sm:text-base transition-all duration-300 resize-none ${errors.message
                   ? 'border-red-500 focus:border-red-500 focus:glow-red'
                   : 'border-white/10 focus:border-[#915EFF] focus:glow-purple'
-              }`}
+                }`}
             />
             {errors.message && (
               <span className="text-red-400 text-xs mt-1 flex items-center gap-1">
@@ -324,7 +321,7 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-white font-medium">Email</p>
-                <p className="text-secondary text-sm">yesshuzaifa@gmail.com</p>
+                <p className="text-secondary text-sm">huzaifasys@gmail.com</p>
               </div>
             </div>
 
@@ -337,7 +334,7 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-white font-medium">Location</p>
-                <p className="text-secondary text-sm">Available for Remote Work</p>
+                <p className="text-secondary text-sm">Available in Karachi & Remote</p>
               </div>
             </div>
 
@@ -356,7 +353,7 @@ const Contact = () => {
 
           <div className="mt-8 p-4 glass-card rounded-2xl">
             <p className="text-secondary/80 text-sm text-center">
-              Ready to build something amazing together? <br/>
+              Ready to build something amazing together? <br />
               <span className="text-gradient-secondary font-medium">Let's turn your ideas into reality!</span>
             </p>
           </div>

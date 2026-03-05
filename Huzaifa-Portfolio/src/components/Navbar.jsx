@@ -5,61 +5,42 @@ import { styles } from "../styles";
 import { navLinks } from "../constants";
 import { logo, menu, close } from "../assets";
 
-// Simple direct scroll function as backup
-const directScrollTo = (elementId) => {
-  console.log(`🎯 Direct scroll to: ${elementId}`);
-  const element = document.getElementById(elementId);
-  if (element) {
-    const yOffset = -100; // Navbar height offset
-    const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-    window.scrollTo({ top: y, behavior: 'smooth' });
-    console.log(`✅ Direct scroll executed to position: ${y}`);
-  } else {
-    console.error(`❌ Direct scroll failed - element ${elementId} not found`);
-  }
-};
+// Easing function for smooth animation
+const easeOutCubic = (t) => --t * t * t + 1;
 
-// Enhanced smooth scroll utility function
+// Custom animated smooth scroll
 const smoothScrollTo = (elementId) => {
-  console.log(`🔍 Attempting to scroll to: ${elementId}`); // Debug log
+  const element = document.getElementById(elementId) ||
+    document.getElementById(`${elementId}-wrapper`) ||
+    document.getElementById(elementId === 'about' ? 'about-me' : elementId === 'experience' ? 'work' : elementId);
 
-  // Multiple attempts to find element (sometimes DOM isn't ready)
-  let attempts = 0;
-  const maxAttempts = 5;
+  if (element) {
+    const yOffset = -90; // Navbar height offset
+    const targetY = element.getBoundingClientRect().top + window.scrollY + yOffset;
+    const startY = window.scrollY;
+    const distance = targetY - startY;
+    const duration = 1000; // 1 second duration
+    let startTime = null;
 
-  const tryScroll = () => {
-    attempts++;
-    const element = document.getElementById(elementId);
-    console.log(`📍 Attempt ${attempts}: Element found:`, element); // Debug log
+    const animation = (currentTime) => {
+      if (startTime === null) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      // Calculate progress between 0 and 1
+      const progress = Math.min(timeElapsed / duration, 1);
 
-    if (element) {
-      const rect = element.getBoundingClientRect();
-      const offsetTop = window.pageYOffset + rect.top - 100; // Better calculation
-      console.log(`🚀 Scrolling to offset: ${offsetTop}`); // Debug log
+      // Apply easing
+      const ease = easeOutCubic(progress);
 
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      });
+      window.scrollTo(0, startY + (distance * ease));
 
-      // Verify scroll happened
-      setTimeout(() => {
-        console.log(`✅ Current scroll position: ${window.pageYOffset}`);
-      }, 1000);
+      // Continue animation if not finished
+      if (timeElapsed < duration) {
+        requestAnimationFrame(animation);
+      }
+    };
 
-    } else if (attempts < maxAttempts) {
-      console.log(`⏳ Element not found, retrying in ${attempts * 100}ms...`);
-      setTimeout(tryScroll, attempts * 100);
-    } else {
-      console.error(`❌ Element with ID '${elementId}' not found after ${maxAttempts} attempts`);
-      // List all available IDs for debugging
-      const allIds = Array.from(document.querySelectorAll('[id]')).map(el => el.id);
-      console.log(`📋 Available IDs:`, allIds);
-    }
-  };
-
-  // Start trying immediately
-  tryScroll();
+    requestAnimationFrame(animation);
+  }
 };
 
 const Navbar = () => {
@@ -84,28 +65,18 @@ const Navbar = () => {
 
   // Handle navigation click with smooth scroll
   const handleNavClick = (navId, navTitle) => {
-    console.log(`🎯 Navigation clicked: ${navTitle} -> ${navId}`); // Debug log
     setActive(navTitle);
     setToggle(false); // Close mobile menu first
 
-    // Use direct scroll method (more reliable)
-    setTimeout(() => {
-      directScrollTo(navId);
-    }, 100);
-
-    // Also try the enhanced smooth scroll as backup
-    setTimeout(() => {
-      smoothScrollTo(navId);
-    }, 200);
+    // Execute scroll immediately
+    smoothScrollTo(navId);
   };
 
   return (
     <nav
-      className={`${
-        styles.paddingX
-      } w-full flex items-center py-3 mobile-lg:py-4 sm:py-5 fixed top-0 z-20 transition-all duration-300 ${
-        scrolled ? "bg-primary/95 backdrop-blur-md shadow-lg" : "bg-transparent"
-      }`}
+      className={`${styles.paddingX
+        } w-full flex items-center py-3 mobile-lg:py-4 sm:py-5 fixed top-0 z-20 transition-all duration-300 ${scrolled ? "bg-primary/95 backdrop-blur-md shadow-lg" : "bg-transparent"
+        }`}
     >
       <div className='w-full flex justify-between items-center max-w-7xl mx-auto'>
         <Link
@@ -127,9 +98,8 @@ const Navbar = () => {
           {navLinks.map((nav) => (
             <li
               key={nav.id}
-              className={`${
-                active === nav.title ? "text-gradient-primary" : "text-secondary"
-              } hover:text-white text-[18px] font-medium cursor-pointer transition-all duration-300 relative group`}
+              className={`${active === nav.title ? "text-white" : "text-secondary"
+                } hover:text-white text-[18px] font-medium cursor-pointer transition-all duration-300 relative group`}
               onClick={() => handleNavClick(nav.id, nav.title)}
             >
               <span className="relative">
@@ -150,17 +120,15 @@ const Navbar = () => {
 
           {/* Mobile Menu Overlay */}
           <div
-            className={`fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${
-              toggle ? "opacity-100 z-40" : "opacity-0 pointer-events-none -z-10"
-            }`}
+            className={`fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${toggle ? "opacity-100 z-40" : "opacity-0 pointer-events-none -z-10"
+              }`}
             onClick={() => setToggle(false)}
           />
 
           {/* Mobile Menu */}
           <div
-            className={`fixed top-0 right-0 h-full w-[280px] mobile-lg:w-[320px] bg-primary/95 backdrop-blur-xl border-l border-white/20 shadow-2xl transform transition-transform duration-300 ease-in-out ${
-              toggle ? "translate-x-0 z-50" : "translate-x-full -z-10"
-            }`}
+            className={`fixed top-0 right-0 h-full w-[280px] mobile-lg:w-[320px] bg-primary/95 backdrop-blur-xl border-l border-white/20 shadow-2xl transform transition-transform duration-300 ease-in-out ${toggle ? "translate-x-0 z-50" : "translate-x-full -z-10"
+              }`}
           >
             {/* Menu Header */}
             <div className="flex items-center justify-between p-6 border-b border-white/20 bg-black/20">
@@ -181,9 +149,8 @@ const Navbar = () => {
               {navLinks.map((nav, index) => (
                 <li
                   key={nav.id}
-                  className={`font-medium cursor-pointer text-[18px] transition-all duration-300 hover:text-white min-h-[56px] flex items-center relative group border border-white/10 rounded-xl ${
-                    active === nav.title ? "text-white bg-gradient-to-r from-[#915EFF]/20 to-[#00cea8]/20 border-[#915EFF]/50" : "text-white/80 hover:bg-white/10"
-                  }`}
+                  className={`font-medium cursor-pointer text-[18px] transition-all duration-300 hover:text-white min-h-[56px] flex items-center relative group border border-white/10 rounded-xl ${active === nav.title ? "text-white bg-gradient-to-r from-[#915EFF]/20 to-[#00cea8]/20 border-[#915EFF]/50" : "text-white/80 hover:bg-white/10"
+                    }`}
                   onClick={() => handleNavClick(nav.id, nav.title)}
                 >
                   <span className="block py-4 px-6 w-full rounded-xl transition-all duration-300 relative font-semibold">

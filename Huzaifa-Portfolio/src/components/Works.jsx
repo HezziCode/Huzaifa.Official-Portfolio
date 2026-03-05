@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { Tilt } from "react-tilt";
+import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -47,22 +47,17 @@ const ProjectCard = ({
   }, []);
 
   return (
-    <div ref={cardRef}>
-      <a
-        href={live_demo_link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block"
+    <div ref={cardRef} className="h-full w-full">
+      <motion.div
+        whileHover={{
+          y: -10,
+          scale: 1.02,
+          transition: { duration: 0.3 }
+        }}
+        onClick={() => window.open(live_demo_link, "_blank")}
+        className="glass-card-strong p-4 sm:p-5 rounded-3xl w-full max-w-[360px] mx-auto relative group cursor-pointer glow-purple h-full flex flex-col transition-shadow duration-300"
       >
-        <Tilt
-          options={{
-            max: 45,
-            scale: 1,
-            speed: 450,
-          }}
-          className="glass-card-strong p-4 sm:p-5 rounded-3xl w-full max-w-[360px] mx-auto relative group cursor-pointer hover-lift glow-purple"
-        >
-        <div className="relative w-full h-[230px] overflow-hidden rounded-2xl">
+        <div className="relative w-full h-[230px] shrink-0 overflow-hidden rounded-2xl">
           <img
             src={image}
             alt="project_image"
@@ -70,16 +65,34 @@ const ProjectCard = ({
           />
 
           {/* Enhanced gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-          <div className="absolute inset-0 flex justify-end m-3 card-img_hover z-10">
+          {/* Hover overlay with "View Project" text - now limited to image area */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-10">
+            <div className="bg-white/20 p-2 sm:p-3 rounded-full mb-2 sm:mb-3 backdrop-blur-sm">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 sm:h-8 sm:w-8 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+            </div>
+            <p className="text-white text-lg sm:text-xl font-bold">View Project</p>
+            <p className="text-white/80 text-xs sm:text-sm mt-1">Click for live demo</p>
+          </div>
+
+          <div className="absolute top-0 right-0 p-3 z-20">
             {/* Enhanced GitHub Repository Link */}
             <a
               href={source_code_link}
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="glass-card w-10 h-10 rounded-full flex justify-center items-center cursor-pointer hover:glow-purple transition-all duration-300 border border-white/20"
+              className="glass-card w-10 h-10 rounded-full flex justify-center items-center cursor-pointer hover:glow-purple transition-all duration-300 border border-white/20 hover:scale-110 active:scale-95"
             >
               <img
                 src={github}
@@ -90,7 +103,7 @@ const ProjectCard = ({
           </div>
         </div>
 
-        <div className="mt-4 sm:mt-5">
+        <div className="mt-4 sm:mt-5 flex-grow flex flex-col">
           <div className="flex items-center">
             <h3 className="text-white font-bold text-[18px] xs:text-[20px] sm:text-[24px] line-clamp-1">{name}</h3>
             <svg
@@ -106,25 +119,7 @@ const ProjectCard = ({
           <p className="mt-2 text-secondary text-[12px] sm:text-[14px] line-clamp-3">{description}</p>
         </div>
 
-        {/* Hover overlay with "View Project" text */}
-        <div className="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-2xl">
-          <div className="bg-white/20 p-2 sm:p-3 rounded-full mb-2 sm:mb-3">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 sm:h-8 sm:w-8 text-white"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-            </svg>
-          </div>
-          <p className="text-white text-lg sm:text-xl font-bold">View Project</p>
-          <p className="text-secondary text-xs sm:text-sm mt-1">Click to open live demo</p>
-        </div>
-
-        <div className="mt-4 flex flex-wrap gap-2">
+        <div className="mt-auto pt-4 flex flex-wrap gap-2 shrink-0">
           {tags.map((tag) => (
             <span
               key={`${name}-${tag.name}`}
@@ -134,8 +129,7 @@ const ProjectCard = ({
             </span>
           ))}
         </div>
-      </Tilt>
-      </a>
+      </motion.div>
     </div>
   );
 };
@@ -181,7 +175,7 @@ const Works = () => {
 
       <div className="works-container mt-12 sm:mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4 sm:gap-5 px-2 sm:px-0">
         {projects.map((project, index) => (
-          <div key={`project-${index}`} className="project-card w-full">
+          <div key={`project-${index}`} className="project-card w-full h-full">
             <ProjectCard index={index} {...project} />
           </div>
         ))}

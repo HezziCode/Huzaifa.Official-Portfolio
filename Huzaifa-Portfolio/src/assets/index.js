@@ -13,11 +13,14 @@ import css from "./tech/css.png";
 import figma from "./tech/figma.png";
 import hezziBlogs from './blogs.jpg';
 import project3 from './E-commerce.jpg';
-import resumeBuilder from './resume.jpg';
-import cryptoAgent from './crypto-agent.jpg';
-import agenticWorld from './agentic-website.jpg'; // Using same image for both projects
-import agenticWebsite from './agentic-website.jpg';
+import chatTask from './chattask-mockup.svg';
+import cryptoAgent from './crypto-agent-mockup.svg';
+import agenticWorld from './agentic-ai-mockup.svg'; // Using same image for both projects
+import agenticWebsite from './agentic-ai-mockup.svg';
 import coffeeWebsite from './coffee-website.jpg';
+import huzenPerfumes from './huzen.png';
+import furniro from './furniro.png';
+import hezziblogs from './hezziblogs.png';
 import mysql from './tech/mysql.png';
 import express from './tech/express.png';
 import aws from './tech/aws.png';
@@ -38,6 +41,8 @@ import secondTestimonial from './image.webp';
 import thirdTestimonial from './third testimonial.webp';
 import stylishProfile from './stylish.jpg';
 
+import postgresql from "./tech/postgresql.png";
+
 export {
   logo,
   backend,
@@ -50,12 +55,15 @@ export {
   externalLink,
   css,
   hezziBlogs,
-  resumeBuilder,
+  chatTask,
   project3,
   cryptoAgent,
   agenticWorld,
   agenticWebsite,
   coffeeWebsite,
+  huzenPerfumes,
+  furniro,
+  hezziblogs,
   mysql,
   express,
   aws,
@@ -78,4 +86,5 @@ export {
   threejs,
   firebase,
   typescript,
+  postgresql,
 };
