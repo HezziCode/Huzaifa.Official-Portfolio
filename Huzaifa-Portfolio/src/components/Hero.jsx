@@ -28,7 +28,7 @@ const Hero = () => {
           </h1>
           <p className={`${styles.heroSubText} mt-2 mobile-lg:mt-3 sm:mt-4 text-white-100/90 max-w-3xl`}>
             I develop <span className="text-gradient-secondary font-semibold">intelligent AI agents</span> and <br className="hidden sm:block" />
-            <span className="sm:hidden"> </span>full-stack web applications
+            <span className="sm:hidden"> </span>web applications
           </p>
 
           {/* Enhanced subtitle - better mobile layout */}

@@ -39,7 +39,7 @@ const ProjectCard = ({
           trigger: el,
           start: "top bottom",  // Trigger when the top of the element hits the bottom of the viewport
           end: "top center",    // End when the top reaches the center of the viewport
-          scrub: true,          // Smoothly sync scroll and animation
+          scrub: 1,          // Smoothly sync scroll and animation
           markers: false,       // Set to `true` to see debug markers
         },
       }
@@ -151,7 +151,7 @@ const Works = () => {
           trigger: ".works-container",
           start: "top bottom",  // Trigger when the top of the container reaches the bottom
           end: "top center",
-          scrub: true,
+          scrub: 1,
           markers: false, // Set to true to see debug markers
         },
       }

@@ -78,7 +78,7 @@ const Experience = () => {
             Work Experience.
           </h2>
           <p className="text-secondary/90 text-sm sm:text-base max-w-3xl mx-auto leading-relaxed">
-            My professional journey in <span className="text-[#915EFF] font-medium">full-stack development</span> and
+            My professional journey in <span className="text-[#915EFF] font-medium">development</span> and
             <span className="text-[#00cea8] font-medium"> AI engineering</span>
           </p>
         </div>

@@ -154,19 +154,31 @@ const technologies = [
 
 const experiences = [
   {
-    title: "Full Stack Developer & Agentic AI Engineer",
-    company_name: "Muhammed Huzaifa Dev",
+    title: "Front-End Intern",
+    company_name: "ByteForge Solutions (Remote, Europe)",
     icon: huzaifadev,
     iconBg: "#383E56",
-    date: "Dec 2023 - present",
+    date: "Dec 2024 - Feb 2025",
     points: [
-      "Developing full-stack web applications using Next.js, FastAPI, and modern database solutions like Neon DB.",
-      "Building intelligent AI agents and chatbots using OpenAI SDK, LangChain, and Chainlit frameworks.",
-      "Implementing content management solutions with Sanity CMS and scalable cloud architectures.",
-      "Creating high-performance backends and real-time AI integrations for enhanced user engagement.",
-      "Developing Python-based AI applications and integrating machine learning models into web platforms.",
-      "Managing end-to-end development workflows from AI model integration to production deployment.",
-      "Specializing in agentic AI systems that can autonomously perform complex tasks and decision-making.",
+      "Completed an online internship as a Frontend Developer at ByteForge Solutions.",
+      "Developed responsive and interactive UI components using Next.js.",
+      "Collaborated with a remote international team to enhance web application performance.",
+      "Optimized front-end code for better SEO and faster loading speeds.",
+      "Gained hands-on experience in modern UI libraries and state management patterns.",
+    ],
+  },
+  {
+    title: "Remote Front-End Developer",
+    company_name: "WeWiseLabs (Product-Based Startup)",
+    icon: huzaifadev,
+    iconBg: "#383E56",
+    date: "June 2025 - Present",
+    points: [
+      "Working as a remote developer for WeWiseLabs, a product-based startup company.",
+      "Collaborating with the product team to develop and maintain coloriqo.wewiselabs.com.",
+      "Building responsive and interactive UI features using Next.js from my home office.",
+      "Ensuring cross-device compatibility and high performance for a seamless user experience.",
+      "Contributing to the core product development lifecycle in a remote-first environment.",
     ],
   },
 ];

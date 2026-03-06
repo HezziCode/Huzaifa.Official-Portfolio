@@ -213,7 +213,7 @@ const AboutMeSection = () => {
               </button>
               <button className="glass-card border border-[#915EFF]/30 py-2 px-4 sm:px-6 rounded-xl text-white font-medium hover:border-[#915EFF] hover:glow-purple transition-all duration-300 text-sm sm:text-base">
                 <a
-                  href="/src/assets/M_Huzaifa_Frontend_Developer.pdf"
+                  href="/src/assets/Huzaifa_Dev.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="resume-button flex items-center gap-2"

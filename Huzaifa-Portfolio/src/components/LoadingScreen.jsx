@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const LoadingScreen = ({ onLoadingComplete }) => {
   const [progress, setProgress] = useState(0);
   const [currentText, setCurrentText] = useState(0);
-  
+
   const loadingTexts = [
     "Initializing AI Systems...",
     "Loading Portfolio Data...",
@@ -19,22 +19,19 @@ const LoadingScreen = ({ onLoadingComplete }) => {
       setProgress(prev => {
         if (prev >= 100) {
           clearInterval(interval);
-          setTimeout(() => onLoadingComplete(), 800);
+          setTimeout(() => onLoadingComplete(), 200);
           return 100;
         }
-        // Variable loading speed for more realistic feel
-        const increment = prev < 30 ? 3 : prev < 70 ? 2 : 1;
+        // Much faster increment for better "feel"
+        const increment = prev < 30 ? 15 : prev < 70 ? 10 : 5;
         return Math.min(prev + increment, 100);
       });
-    }, 60);
+    }, 40);
 
     // Change loading text based on progress
     const textInterval = setInterval(() => {
-      setCurrentText(prev => {
-        const nextIndex = (prev + 1) % loadingTexts.length;
-        return nextIndex;
-      });
-    }, 1200);
+      setCurrentText(prev => (prev + 1) % loadingTexts.length);
+    }, 800);
 
     return () => {
       clearInterval(interval);
@@ -55,7 +52,7 @@ const LoadingScreen = ({ onLoadingComplete }) => {
       >
         {/* Background Pattern */}
         <div className="absolute inset-0 grid-pattern opacity-20"></div>
-        
+
         {/* Floating Particles */}
         <div className="absolute inset-0">
           {[...Array(20)].map((_, i) => (
@@ -93,7 +90,7 @@ const LoadingScreen = ({ onLoadingComplete }) => {
                 Huzaifa
               </h1>
               <p className="text-secondary text-sm">
-                Full Stack Developer & AI Engineer
+                Developer & AI Engineer
               </p>
             </div>
           </motion.div>
@@ -137,7 +134,7 @@ const LoadingScreen = ({ onLoadingComplete }) => {
                   </linearGradient>
                 </defs>
               </svg>
-              
+
               {/* Progress Percentage */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <span className="text-white text-lg font-bold">{progress}%</span>

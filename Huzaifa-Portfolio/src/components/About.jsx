@@ -33,7 +33,7 @@ const ServiceCard = ({ index, title, icon }) => {
   const cardRef = useRef(null);
   useGsap(cardRef, {
     from: { opacity: 0, y: 100, scale: 0.8 },
-    to: { opacity: 1, y: 0, scale: 1, duration: 1, ease: "power3.out" },
+    to: { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "power3.out" },
   }, index * 0.2);
 
   return (
@@ -74,7 +74,7 @@ const About = () => {
       <p ref={paragraphRef} className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]">
         Hi! I'm a developer and Agentic AI engineer who loves building solutions that make a difference.
         Using TypeScript, Next.js, FastAPI, NeonDB, Firebase, and Sanity, I create fast, SEO-friendly, and user-focused websites.
-        In AI, I build autonomous agents with Python, FastAPI, OpenAI's Agent SDK, Streamlit, and Chainlit, turning ideas into reality.      
+        In AI, I build autonomous agents with Python, FastAPI, OpenAI's Agent SDK, Streamlit, and Chainlit, turning ideas into reality.
       </p>
       <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center gap-10">
         {services.map((service, index) => (
