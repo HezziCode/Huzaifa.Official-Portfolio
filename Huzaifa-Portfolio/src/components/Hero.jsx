@@ -27,7 +27,7 @@ const Hero = () => {
             Hi, I'm <span className='text-gradient-primary'>Huzaifa</span>
           </h1>
           <p className={`${styles.heroSubText} mt-2 mobile-lg:mt-3 sm:mt-4 text-white-100/90 max-w-3xl`}>
-            I develop <span className="text-gradient-secondary font-semibold">intelligent AI agents</span> and <br className="hidden sm:block"/>
+            I develop <span className="text-gradient-secondary font-semibold">intelligent AI agents</span> and <br className="hidden sm:block" />
             <span className="sm:hidden"> </span>full-stack web applications
           </p>
 
@@ -35,7 +35,7 @@ const Hero = () => {
           <div className="mt-3 mobile-lg:mt-4 sm:mt-6 flex items-center justify-center sm:justify-start gap-2 mobile-lg:gap-3 flex-wrap">
             <div className="w-6 mobile-lg:w-8 sm:w-12 h-0.5 bg-gradient-to-r from-[#915EFF] to-[#00cea8]"></div>
             <p className="text-secondary text-[10px] mobile-lg:text-xs sm:text-sm font-medium text-center sm:text-left">
-              Full Stack Developer & Agentic AI Engineer
+              Developer & Agentic AI Engineer
             </p>
           </div>
         </div>

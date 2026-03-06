@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionWrapper } from "../hoc";
 import { styles } from "../styles";
-import { stylishProfile } from "../assets";
+import { huzaifaProfile } from "../assets";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -107,43 +107,42 @@ const AboutMeSection = () => {
       {/* Enhanced About Me title with glassmorphism */}
       <div
         ref={titleRef}
-        className="absolute top-4 sm:top-8 left-4 sm:left-8 z-10"
+        className="absolute top-4 sm:top-8 left-4 sm:left-8 z-20"
       >
-        <div className="glass-card-strong rounded-2xl p-4 sm:p-6 backdrop-blur-xl">
-          <h2 className="text-gradient-primary text-3xl sm:text-4xl font-bold tracking-wider mb-2">
+        <div className="glass-card-strong rounded-2xl px-4 py-3 sm:px-5 sm:py-4 backdrop-blur-xl">
+          <h2 className="text-gradient-primary text-2xl sm:text-3xl font-bold tracking-wider mb-1">
             About Me
           </h2>
-          <div className="w-16 sm:w-20 h-1 bg-gradient-to-r from-[#915EFF] to-[#00cea8] rounded-full glow-purple"></div>
-          <p className="text-secondary/80 text-sm mt-2 font-medium">
-            Crafting Digital Experiences
-          </p>
+          <div className="w-12 sm:w-16 h-1 bg-gradient-to-r from-[#915EFF] to-[#00cea8] rounded-full glow-purple"></div>
         </div>
       </div>
 
       {/* Main content container */}
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-6 sm:gap-8 px-4 sm:px-6 py-12 sm:py-16 max-w-7xl mx-auto">
-        {/* Enhanced Profile image with glassmorphism frame */}
+        {/* Profile picture with thin professional border */}
         <div
           ref={imageRef}
           className="relative flex-shrink-0 mt-12 sm:mt-0 group"
         >
-          {/* Glassmorphism frame around image */}
-          <div className="glass-card-strong p-3 sm:p-4 rounded-3xl hover-lift">
-            <div className="relative w-52 h-52 xs:w-64 xs:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-2xl overflow-hidden border-2 border-[#915EFF]/40 shadow-2xl glow-purple">
-              <img
-                src={stylishProfile}
-                alt="Huzaifa"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-
-              {/* Subtle overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#915EFF]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          {/* Thin gradient border frame */}
+          <div className="rounded-2xl p-[1.5px] bg-gradient-to-r from-[#915EFF] to-[#00cea8] shadow-2xl transition-all duration-500 group-hover:scale-[1.03]"
+            style={{ boxShadow: "0 0 20px rgba(145,94,255,0.2)" }}>
+            <div className="rounded-2xl bg-[#050816] p-1.5 overflow-hidden">
+              <div className="w-64 xs:w-72 md:w-80 lg:w-[400px] aspect-[4/5] overflow-hidden rounded-xl bg-gradient-to-b from-[#151030] to-[#050816] flex items-end">
+                <img
+                  src={huzaifaProfile}
+                  alt="Huzaifa"
+                  className="w-full h-full object-contain object-bottom scale-110 origin-bottom transition-transform duration-500 group-hover:scale-[1.15]"
+                  style={{ filter: "drop-shadow(0 4px 20px rgba(145,94,255,0.4))" }}
+                />
+              </div>
             </div>
           </div>
 
-          {/* Floating status indicator */}
-          <div className="absolute -top-2 -right-2 glass-card rounded-full p-2 border border-green-400/30">
-            <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+          {/* Floating status badge */}
+          <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-[#050816]/90 backdrop-blur-sm border border-[#915EFF]/30 rounded-full px-4 py-1.5 shadow-xl">
+            <div className="w-2.5 h-2.5 bg-green-400 rounded-full animate-pulse shadow-[0_0_10px_#4ade80]"></div>
+            <span className="text-xs text-secondary font-medium tracking-wide">Available for work</span>
           </div>
         </div>
 
@@ -157,7 +156,7 @@ const AboutMeSection = () => {
               </h3>
               <div className="flex items-center justify-center md:justify-start gap-2 mb-3">
                 <span className="text-[#00cea8] text-sm font-semibold">
-                  Full Stack Developer & Agentic AI Engineer
+                  Developer & Agentic AI Engineer
                 </span>
                 <div className="w-2 h-2 bg-[#00cea8] rounded-full animate-pulse"></div>
               </div>
@@ -167,17 +166,17 @@ const AboutMeSection = () => {
             <p className="text-secondary/90 text-base sm:text-lg leading-relaxed mb-6 font-light">
               Hi! I'm a{" "}
               <span className="text-gradient-secondary font-semibold">
-                full-stack developer and Agentic AI engineer
+                developer and Agentic AI engineer
               </span>{" "}
               who loves building solutions that make a difference. Using
               <span className="text-[#915EFF] font-medium">
                 {" "}
-                HTML, CSS, TypeScript, Next.js, MongoDB, Firebase, and Sanity
+                TypeScript, Next.js, FastAPI, NeonDB, Firebase, and Sanity
               </span>
-              , I create fast, SEO-friendly websites. In AI, I build autonomous agents with
+              , I create fast, SEO-friendly, and user-focused websites. In AI, I build autonomous agents with
               <span className="text-[#00cea8] font-medium">
                 {" "}
-                Python, OpenAI's Agent SDK, Streamlit, and Chainlit
+                Python, FastAPI, OpenAI's Agent SDK, Streamlit, and Chainlit
               </span>
               , turning ideas into reality.
             </p>

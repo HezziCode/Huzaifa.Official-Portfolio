@@ -40,6 +40,7 @@ import firstTestimonial from './Tars Ken.webp';
 import secondTestimonial from './image.webp';
 import thirdTestimonial from './third testimonial.webp';
 import stylishProfile from './stylish.jpg';
+import huzaifaProfile from './huzaifa-profile.png';
 
 import postgresql from "./tech/postgresql.png";
 
@@ -72,6 +73,7 @@ export {
   secondTestimonial,
   thirdTestimonial,
   stylishProfile,
+  huzaifaProfile,
   gsap,
   framer,
   figma,
