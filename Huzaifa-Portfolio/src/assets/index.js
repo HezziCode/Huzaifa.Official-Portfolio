@@ -11,13 +11,9 @@ import gsap from './tech/gsap.png'
 import framer from './tech/framer.png';
 import css from "./tech/css.png";
 import figma from "./tech/figma.png";
-import hezziBlogs from './blogs.jpg';
-import project3 from './E-commerce.jpg';
 import chatTask from './chattask-mockup.svg';
 import cryptoAgent from './crypto-agent-mockup.svg';
-import agenticWorld from './agentic-ai-mockup.svg'; // Using same image for both projects
 import agenticWebsite from './agentic-ai-mockup.svg';
-import coffeeWebsite from './coffee-website.jpg';
 import huzenPerfumes from './huzen.png';
 import furniro from './furniro.png';
 import hezziblogs from './hezziblogs.png';
@@ -39,7 +35,6 @@ import typescript from "./tech/typescript.png";
 import firstTestimonial from './Tars Ken.webp';
 import secondTestimonial from './image.webp';
 import thirdTestimonial from './third testimonial.webp';
-import stylishProfile from './stylish.jpg';
 import huzaifaProfile from './huzaifa-profile.png';
 
 import postgresql from "./tech/postgresql.png";
@@ -55,13 +50,9 @@ export {
   close,
   externalLink,
   css,
-  hezziBlogs,
   chatTask,
-  project3,
   cryptoAgent,
-  agenticWorld,
   agenticWebsite,
-  coffeeWebsite,
   huzenPerfumes,
   furniro,
   hezziblogs,
@@ -72,7 +63,6 @@ export {
   firstTestimonial,
   secondTestimonial,
   thirdTestimonial,
-  stylishProfile,
   huzaifaProfile,
   gsap,
   framer,
